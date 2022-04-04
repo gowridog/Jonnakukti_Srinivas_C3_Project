@@ -79,4 +79,20 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void totalPrice_for_added_menu_items(){
+
+        restaurant.addToMenu("Totamto Soupe", 25);
+        restaurant.addToMenu("Apple Juice", 30);
+        restaurant.addToMenu("Orange Juice", 40);
+        restaurant.addToMenu("Biryani", 150);
+
+        List<String> itemsSelected = new ArrayList<String>();
+        itemsSelected.add("Totamto Soupe");
+        itemsSelected.add("Biryani");
+
+        int actualAmount = restaurant.getMenuTotalAmount(itemsSelected);
+        int expectedAmount = 175;
+        assertEquals(expectedAmount, actualAmount);
+    }
 }
